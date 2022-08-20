@@ -1,0 +1,33 @@
+const router = require("express").Router();
+const verifyToken = require("../middleware/VerifyToken");
+const authRoute = require("./auth.route");
+const userRoute = require("./user.route");
+const bannerRoute = require("./banner.route");
+const categoryRoute = require("./category.route");
+const couponRoute = require("./coupon.route");
+const settingRoute = require("./setting.route");
+const productRoute = require("./product.route");
+const cartRoute = require("./cart.route");
+const favoriteRoute = require("./favorite.route");
+const orderRoute = require("./order.route");
+const addressRoute = require("./address.route");
+const adminRoute = require("./admin.route");
+const shippingChargeRoute = require("./shippingCharge.route");
+const homeRoute = require("./home.route");
+
+router.use("/auth", authRoute);
+router.use("/users", verifyToken, userRoute);
+router.use("/admin", verifyToken, adminRoute);
+router.use("/banners", verifyToken, bannerRoute);
+router.use("/categories", verifyToken, categoryRoute);
+router.use("/coupons", verifyToken, couponRoute);
+router.use("/setting", settingRoute);
+router.use("/products", verifyToken, productRoute);
+router.use("/carts", verifyToken, cartRoute);
+router.use("/favorites", verifyToken, favoriteRoute);
+router.use("/orders", verifyToken, orderRoute);
+router.use("/address", verifyToken, addressRoute);
+router.use("/shippingCharges", verifyToken, shippingChargeRoute);
+router.use("/home", verifyToken, homeRoute);
+
+module.exports = router;
